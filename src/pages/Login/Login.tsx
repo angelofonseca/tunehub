@@ -30,14 +30,17 @@ function Login() {
 
   return (
     <form onSubmit={ handleSubmit }>
+
       <label htmlFor="login">Login</label>
       <input
         type="text"
         data-testid="login-name-input"
         value={ login }
+        id="Login"
         name="login"
         onChange={ ({ target }) => setLogin(target.value) }
       />
+
       <button
         type="submit"
         data-testid="login-submit-button"
@@ -45,6 +48,7 @@ function Login() {
       >
         Entrar
       </button>
+
     </form>
   );
 }

@@ -1,6 +1,8 @@
+import { AlbumType } from '../../types';
+
 function Album() {
   return (
-    <div>Album</div>
+    <section />
   );
 }
 
