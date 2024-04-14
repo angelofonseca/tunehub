@@ -40,7 +40,7 @@ function Login() {
         type="text"
         data-testid="login-name-input"
         value={ login }
-        id="Login"
+        id="login"
         name="login"
         onChange={ ({ target }) => setLogin(target.value) }
       />

@@ -1,0 +1,31 @@
+.active {
+background-color: green;
+color: white;
+}
+
+
+.search-form {
+    margin-top: 100px;
+    gap: 0px;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.search-input {
+    height: 38px;
+    width: 80%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+ }
+
+.albuns {
+    justify-content: center;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    gap: 40px;
+    flex-wrap: wrap;
+}

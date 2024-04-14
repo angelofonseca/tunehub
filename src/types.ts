@@ -21,3 +21,10 @@ export type SongType = {
   trackName: string,
   previewUrl: string,
 };
+
+export type AlbumCardType = {
+  artistName: string;
+  collectionName: string;
+  collectionId: number;
+  artworkUrl100: string;
+}

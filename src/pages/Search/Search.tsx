@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import Loading from '../../components/Loading/Loading';
 import { AlbumType } from '../../types';
+import './Search.css';
+import SearchCard from '../../components/SearchCard/SearchCard';
 
 function Search() {
   const [data, setData] = useState<AlbumType[] | null>(null);
@@ -23,6 +25,7 @@ function Search() {
     event.preventDefault();
     setLoading(true);
     const getAlbums = await searchAlbumsAPI(name);
+
     setLoading(false);
     if (getAlbums.length > 0) setSearchedName(name);
     setData(getAlbums);
@@ -34,22 +37,25 @@ function Search() {
 
   return (
     <>
-      <form onSubmit={ handleSubmit }>
+      <form className='search-form' onSubmit={handleSubmit}>
 
-        <label htmlFor="artist">Pesquisar</label>
+        <label className='form-label' htmlFor="artist"></label>
         <input
+          placeholder='Nome do Artista'
+          className='form-control search-input'
           type="text"
           data-testid="search-artist-input"
-          value={ name }
+          value={name}
           id="artist"
           name="artist"
-          onChange={ ({ target }) => setName(target.value) }
+          onChange={({ target }) => setName(target.value)}
         />
 
         <button
+          className='btn btn-primary'
           type="submit"
           data-testid="search-artist-button"
-          disabled={ isDisabled }
+          disabled={isDisabled}
         >
           Pesquisar
         </button>
@@ -57,25 +63,22 @@ function Search() {
       </form>
       {/* Se o artista existe retorna esse h2 */}
       {searchedName && (
-        <h2>
+        <h2 className='title'>
           Resultado de álbuns de:
           {' '}
           {searchedName}
-          {' '}
         </h2>)}
-      {/* Card dos albuns */}
-      {data?.map(({ collectionId, collectionName, artistName }) => (
-        <div key={ collectionId }>
-          <Link
-            to={ `/album/${collectionId}` }
-            data-testid={ `link-to-album-${collectionId}` }
-          >
-            Link do Album
-          </Link>
-          <p>{collectionName}</p>
-          <p>{artistName}</p>
-        </div>
-      ))}
+      <section className='albuns'>
+        {/* Card dos albuns */}
+        {data?.map(({ collectionId, collectionName, artistName, artworkUrl100 }) => (
+          <SearchCard
+            key={collectionId}
+            collectionId={collectionId}
+            collectionName={collectionName}
+            artistName={artistName}
+            artworkUrl100={artworkUrl100} />
+        ))}
+      </section>
     </>
   );
 }

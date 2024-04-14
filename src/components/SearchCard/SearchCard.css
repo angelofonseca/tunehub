@@ -1,0 +1,13 @@
+.card {
+    width: 13rem;
+    padding: 0px;
+    border: none;
+}
+
+.card-body {
+    height: 10%;
+}
+
+.card-body > p {
+    font-size: 16px;
+}
