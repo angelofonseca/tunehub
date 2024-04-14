@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
-import Loading from '../../components/Loading';
+import Loading from '../../components/Loading/Loading';
+import './login.css';
 
 function Login() {
   const [login, setLogin] = useState('');
@@ -29,10 +31,12 @@ function Login() {
   if (loading) return <Loading />;
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form className="centered card" onSubmit={ handleSubmit }>
 
-      <label htmlFor="login">Login</label>
+      <label className="form-label" htmlFor="login" />
       <input
+        className="form-control form-control-lg"
+        placeholder="Nome"
         type="text"
         data-testid="login-name-input"
         value={ login }
@@ -42,6 +46,7 @@ function Login() {
       />
 
       <button
+        className="btn btn-primary btn-lg"
         type="submit"
         data-testid="login-submit-button"
         disabled={ isDisabled }

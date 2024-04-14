@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
-import Loading from '../../components/Loading';
+import Loading from '../../components/Loading/Loading';
 import { AlbumType } from '../../types';
 
 function Search() {
@@ -23,9 +23,9 @@ function Search() {
     event.preventDefault();
     setLoading(true);
     const getAlbums = await searchAlbumsAPI(name);
+    setLoading(false);
     if (getAlbums.length > 0) setSearchedName(name);
     setData(getAlbums);
-    setLoading(false);
     setName('');
   };
 
