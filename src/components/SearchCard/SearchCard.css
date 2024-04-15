@@ -1,13 +1,14 @@
 .card {
-    width: 13rem;
-    padding: 0px;
-    border: none;
+  border: none;
+  padding: 0;
+  width: 240px;
 }
 
 .card-body {
-    height: 10%;
+  height: 124px;
+  overflow: auto;
 }
 
 .card-body > p {
-    font-size: 16px;
+  font-size: 16px;
 }

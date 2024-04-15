@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
 import Loading from '../../components/Loading/Loading';
-import './login.css';
+import './Login.css';
+import { LoadType } from '../../types';
 
-function Login() {
+function Login({ loadProps } : { loadProps: LoadType }) {
+  const { load, setLoad } = loadProps;
+
   const [login, setLogin] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,20 +20,23 @@ function Login() {
       setIsDisabled(true);
     }
   }, [login]);
-
+  /* Cria o usuário e navega para página de pesquisa */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoading(true);
+
+    setLoad(true);
     await createUser({ name: login });
-    setLoading(false);
+    setLoad(false);
+
     navigate('/search');
     setLogin('');
   };
 
-  if (loading) return <Loading />;
+  if (load) return <Loading />;
 
   return (
-    <form className="centered card" onSubmit={ handleSubmit }>
+    /* Formulário de cadastro */
+    <form className="centered login-card" onSubmit={ handleSubmit }>
 
       <label className="form-label" htmlFor="login" />
       <input

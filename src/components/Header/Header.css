@@ -1,0 +1,43 @@
+.nav-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+
+}
+
+.nav-bottom {
+  padding: 0;
+}
+
+.link {
+  color: green;
+  display: flex;
+  flex-grow: 1;
+  font-size: 20px;
+  justify-content: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.active {
+  background-color: green;
+  color: white;
+}
+
+.user-icon {
+  font-size: 24px;
+}
+
+.btn-user {
+  align-items: center;
+  border-radius: 100px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+  margin-right: 40px;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 0;
+}

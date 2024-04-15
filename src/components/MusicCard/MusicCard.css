@@ -1,0 +1,23 @@
+.music-card-container {
+  align-items: center;
+  display: flex;
+  flex-basis: 0;
+  gap: 40px;
+}
+
+.song-name {
+  flex: 1 1 0px;
+  margin-left: 10px;
+}
+
+audio {
+  flex: 1 1 0px;
+}
+
+.favorite-input {
+  display: none;
+}
+
+.heart-icon {
+  cursor: pointer;
+}

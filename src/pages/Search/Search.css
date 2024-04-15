@@ -1,31 +1,27 @@
-.active {
-background-color: green;
-color: white;
-}
-
-
 .search-form {
-    margin-top: 100px;
-    gap: 0px;
-    justify-content: space-between;
-    flex-direction: row;
+  flex-direction: row;
+  gap: 0;
+  justify-content: space-between;
+  margin-top: 100px;
 }
 
 .search-input {
-    height: 38px;
-    width: 80%;
+  box-shadow: none;
+  font-size: 20px;
+  height: 48.96px;
+  width: 80%;
 }
 
 .title {
-    text-align: center;
-    margin-bottom: 30px;
- }
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-.albuns {
-    justify-content: center;
-    display: flex;
-    width: 80%;
-    margin: auto;
-    gap: 40px;
-    flex-wrap: wrap;
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
 }

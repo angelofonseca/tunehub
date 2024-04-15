@@ -1,0 +1,18 @@
+.album-section {
+  align-items: flex-start;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.aside-music-list {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow: auto;
+  padding: 10px;
+}
+

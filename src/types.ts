@@ -22,9 +22,21 @@ export type SongType = {
   previewUrl: string,
 };
 
+export type SearchType = {
+  search: AlbumType[] | null;
+  setSearch: (value: React.SetStateAction<AlbumType[] | null>) => void;
+  // load: boolean;
+  // setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type LoadType = {
+  load: boolean;
+  setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export type AlbumCardType = {
   artistName: string;
   collectionName: string;
   collectionId: number;
   artworkUrl100: string;
-}
+};
