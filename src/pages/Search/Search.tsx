@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SearchCard from '../../components/SearchCard/SearchCard';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import Loading from '../../components/Loading/Loading';
@@ -14,16 +14,7 @@ function Search({ searchProps, loadProps }: {
   const { load, setLoad } = loadProps;
 
   const [name, setName] = useState('');
-  const [isDisabled, setIsDisabled] = useState(true);
 
-  /* Atualiza o estado name e verifica se é maior ou igual a 2 */
-  useEffect(() => {
-    if (name.length > 1) {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
-    }
-  }, [name]);
   /* Procura os albuns na API e verifica existe algum album */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -60,7 +51,7 @@ function Search({ searchProps, loadProps }: {
           className="btn btn-primary btn-lg"
           type="submit"
           data-testid="search-artist-button"
-          disabled={ isDisabled }
+          disabled={ name.length < 2 }
         >
           Pesquisar
         </button>

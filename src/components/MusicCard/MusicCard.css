@@ -15,7 +15,8 @@ audio {
 }
 
 .favorite-input {
-  display: none;
+
+  /* display: none; */
 }
 
 .heart-icon {

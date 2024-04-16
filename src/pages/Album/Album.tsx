@@ -13,6 +13,11 @@ function Album({ loadProps } : { loadProps: LoadType }) {
 
   const [songs, setSongs] = useState<SongType[]>([]);
   const [album, setAlbum] = useState<(AlbumType)>();
+  // const [favorite, setFavorite] = useState(false);
+
+  // const addFavorite = () => {
+  //   setFavorite(!favorite);
+  // };
 
   /* Verifica se o id não é undefined, faz o fetch do album
   e suas musicas e separa o objeto do album do objeto das musicas */
@@ -56,6 +61,7 @@ function Album({ loadProps } : { loadProps: LoadType }) {
           <MusicCard
             key={ song.trackId }
             { ...song }
+            // addFavorite={ addFavorite }
           />
         ))}
       </aside>

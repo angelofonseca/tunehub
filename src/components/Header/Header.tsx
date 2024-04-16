@@ -29,7 +29,7 @@ function Header({ loadProps } : { loadProps: LoadType }) {
     <header data-testid="header-component">
       <nav className="nav-top">
         <button
-          className="btn btn-primary btn-user"
+          className="btn btn-primary btn-success btn-user"
           data-testid="header-user-name"
         >
           <span><FaUserCircle className="user-icon" /></span>

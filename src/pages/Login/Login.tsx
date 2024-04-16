@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
 import Loading from '../../components/Loading/Loading';
@@ -10,16 +10,8 @@ function Login({ loadProps } : { loadProps: LoadType }) {
   const { load, setLoad } = loadProps;
 
   const [login, setLogin] = useState('');
-  const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (login.length > 2) {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
-    }
-  }, [login]);
   /* Cria o usuário e navega para página de pesquisa */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -54,7 +46,7 @@ function Login({ loadProps } : { loadProps: LoadType }) {
         className="btn btn-primary btn-lg"
         type="submit"
         data-testid="login-submit-button"
-        disabled={ isDisabled }
+        disabled={ login.length < 3 }
       >
         Entrar
       </button>

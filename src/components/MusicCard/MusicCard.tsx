@@ -3,8 +3,11 @@ import { SongType } from '../../types';
 import favorite from '../../images/checked_heart.png';
 import notFavorite from '../../images/empty_heart.png';
 import './MusicCard.css';
+import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 
-function MusicCard({ previewUrl, trackName, trackId }: SongType) {
+function MusicCard(SongProps: SongType) {
+  const { previewUrl, trackId, trackName } = SongProps;
+
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -33,7 +36,14 @@ function MusicCard({ previewUrl, trackName, trackId }: SongType) {
           name="favorite"
           id={ `favorite-${trackId.toString()}` }
           checked={ isChecked }
-          onChange={ () => setIsChecked(!isChecked) }
+          onChange={ () => {
+            setIsChecked(!isChecked);
+            if (isChecked) {
+              removeSong(SongProps);
+            } else {
+              addSong(SongProps);
+            }
+          } }
         />
       </div>
       <hr className="music-card-hr" />
