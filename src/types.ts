@@ -25,8 +25,8 @@ export type SongType = {
 export type SearchType = {
   search: AlbumType[] | null;
   setSearch: (value: React.SetStateAction<AlbumType[] | null>) => void;
-  // load: boolean;
-  // setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+  searched: string;
+  setSearched: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type LoadType = {

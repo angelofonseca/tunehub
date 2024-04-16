@@ -10,11 +10,10 @@ function Search({ searchProps, loadProps }: {
   searchProps: SearchType,
   loadProps: LoadType
 }) {
-  const { search, setSearch } = searchProps;
+  const { search, setSearch, searched, setSearched } = searchProps;
   const { load, setLoad } = loadProps;
 
   const [name, setName] = useState('');
-  const [searchedName, setSearchedName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
 
   /* Atualiza o estado name e verifica se é maior ou igual a 2 */
@@ -33,16 +32,12 @@ function Search({ searchProps, loadProps }: {
     const getAlbums = await searchAlbumsAPI(name);
     setLoad(false);
 
-    if (getAlbums.length > 0) setSearchedName(name);
+    setSearched(name);
     setSearch(getAlbums);
     setName('');
   };
 
   if (load) return <Loading />;
-
-  if (search?.length === 0) {
-    return <h2 className="centered">Nenhum álbum foi encontrado</h2>;
-  }
 
   return (
     <>
@@ -71,15 +66,20 @@ function Search({ searchProps, loadProps }: {
         </button>
 
       </form>
+
       {/* Se o artista existe retorna esse h2 */}
-      {searchedName && (
+      {(search && search?.length > 0) && (
         <h2 className="title">
           Resultado de álbuns de:
           {' '}
-          {searchedName}
+          {searched}
         </h2>)}
+
+      {search?.length === 0
+         && <h2 className="centered">Nenhum álbum foi encontrado</h2>}
+
+      {/* Section com card dos albuns */}
       <section className="albums">
-        {/* Card dos albuns */}
         {search?.map(({ collectionId, collectionName, artistName, artworkUrl100 }) => (
           <SearchCard
             key={ collectionId }

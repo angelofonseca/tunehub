@@ -13,6 +13,7 @@ import { AlbumType } from './types';
 
 function App() {
   const [search, setSearch] = useState<AlbumType[] | null>(null);
+  const [searched, setSearched] = useState('');
   const [load, setLoad] = useState(false);
 
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route
           path="/search"
           element={ <Search
-            searchProps={ { search, setSearch } }
+            searchProps={ { search, setSearch, searched, setSearched } }
             loadProps={ { load, setLoad } }
           /> }
         />
