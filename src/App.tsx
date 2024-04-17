@@ -9,10 +9,11 @@ import Profile from './pages/Profile/Profile';
 import Edit from './pages/Profile/Edit/Edit';
 import NotFound from './pages/NotFound/NotFound';
 import Layout from './components/Layout/Layout';
-import { AlbumType } from './types';
+import { AlbumType, SongType } from './types';
 
 function App() {
   const [search, setSearch] = useState<AlbumType[] | null>(null);
+  const [favorites, setFavorites] = useState<SongType[] | null>(null);
   const [searched, setSearched] = useState('');
   const [load, setLoad] = useState(false);
 
@@ -27,8 +28,20 @@ function App() {
             loadProps={ { load, setLoad } }
           /> }
         />
-        <Route path="/album/:id" element={ <Album loadProps={ { load, setLoad } } /> } />
-        <Route path="/favorites" element={ <Favorites /> } />
+        <Route
+          path="/album/:id"
+          element={ <Album
+            loadProps={ { load, setLoad } }
+            favoritesProps={ { favorites, setFavorites } }
+          /> }
+        />
+        <Route
+          path="/favorites"
+          element={ <Favorites
+            loadProps={ { load, setLoad } }
+            favoritesProps={ { favorites, setFavorites } }
+          /> }
+        />
         <Route path="/profile" element={ <Profile /> } />
         <Route path="profile/edit" element={ <Edit /> } />
         <Route path="/*" element={ <NotFound /> } />

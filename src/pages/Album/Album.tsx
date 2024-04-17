@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AlbumType, LoadType, SongType } from '../../types';
+import { AlbumType, FavoritesType, LoadType, SongType } from '../../types';
 import getMusics from '../../services/musicsAPI';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
@@ -8,8 +8,12 @@ import './Album.css';
 import SearchCard from '../../components/SearchCard/SearchCard';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
-function Album({ loadProps } : { loadProps: LoadType }) {
+function Album({ loadProps, favoritesProps }: {
+  loadProps: LoadType;
+  favoritesProps: FavoritesType;
+}) {
   const { load, setLoad } = loadProps;
+  // const { favorites, setFavorites } = favoritesProps;
   const { id } = useParams();
 
   const [songs, setSongs] = useState<SongType[]>([]);
@@ -30,26 +34,23 @@ function Album({ loadProps } : { loadProps: LoadType }) {
 
         const getSongsList = albumAndSongs.slice(1) as SongType[];
         console.log(favoriteSongs);
+
         const newSongsList = getSongsList.map((element) => {
-          if (favoriteSongs.find((music) => music.trackId === element.trackId)) {
+          if (favoriteSongs?.find((music) => music.trackId === element.trackId)) {
             return { ...element, favorite: true };
           }
           return { ...element, favorite: false };
         });
-
-        newSongsList.map((element) => {
-          setSongs((prevSongs) => [...prevSongs, element]);
-          return element;
-        });
+        setSongs(newSongsList);
       }
     };
     getData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCheck = (trackId: number) => {
+  const handleCheckBox = (music: SongType) => {
     const songsList = songs.map((song) => {
-      if (trackId === song.trackId) {
+      if (music.trackId === song.trackId) {
         if (song.favorite) {
           removeSong(song);
         } else {
@@ -81,7 +82,7 @@ function Album({ loadProps } : { loadProps: LoadType }) {
           <MusicCard
             key={ song.trackId }
             songData={ song }
-            onCheck={ handleCheck }
+            onCheck={ handleCheckBox }
           />
         ))}
       </aside>

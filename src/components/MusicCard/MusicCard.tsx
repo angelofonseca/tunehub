@@ -5,7 +5,7 @@ import './MusicCard.css';
 
 type SongsListType = {
   songData: SongType;
-  onCheck: (id: number) => void;
+  onCheck: (songData: SongType) => void;
 };
 
 function MusicCard({ songData, onCheck }: SongsListType) {
@@ -37,7 +37,7 @@ function MusicCard({ songData, onCheck }: SongsListType) {
           name="favorite"
           id={ `favorite-${trackId.toString()}` }
           checked={ favorite }
-          onChange={ () => onCheck(trackId) }
+          onChange={ () => onCheck(songData) }
         />
       </div>
       <hr className="music-card-hr" />

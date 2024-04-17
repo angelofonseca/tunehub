@@ -7,8 +7,8 @@ import { LoadType, SearchType } from '../../types';
 import './Search.css';
 
 function Search({ searchProps, loadProps }: {
-  searchProps: SearchType,
-  loadProps: LoadType
+  searchProps: SearchType;
+  loadProps: LoadType;
 }) {
   const { search, setSearch, searched, setSearched } = searchProps;
   const { load, setLoad } = loadProps;
