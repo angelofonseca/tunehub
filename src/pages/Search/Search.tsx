@@ -20,7 +20,8 @@ function Search({ searchProps, loadProps }: {
     event.preventDefault();
 
     setLoad(true);
-    const getAlbums = await searchAlbumsAPI(name);
+    const getAlbums = await searchAlbumsAPI(name.toLowerCase());
+
     setLoad(false);
 
     setSearched(name);

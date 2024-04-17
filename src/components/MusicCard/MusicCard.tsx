@@ -1,14 +1,15 @@
-import { useState } from 'react';
 import { SongType } from '../../types';
-import favorite from '../../images/checked_heart.png';
+import favoriteImg from '../../images/checked_heart.png';
 import notFavorite from '../../images/empty_heart.png';
 import './MusicCard.css';
-import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 
-function MusicCard(SongProps: SongType) {
-  const { previewUrl, trackId, trackName } = SongProps;
+type SongsListType = {
+  songData: SongType;
+  onCheck: (id: number) => void;
+};
 
-  const [isChecked, setIsChecked] = useState(false);
+function MusicCard({ songData, onCheck }: SongsListType) {
+  const { previewUrl, trackId, trackName, favorite } = songData;
 
   return (
     <>
@@ -26,8 +27,8 @@ function MusicCard(SongProps: SongType) {
           htmlFor={ `favorite-${trackId.toString()}` }
           data-testid={ `checkbox-music-${trackId}` }
         >
-          {isChecked
-            ? <img className="heart-icon" src={ favorite } alt="favorite" />
+          {favorite
+            ? <img className="heart-icon" src={ favoriteImg } alt="favorite" />
             : <img className="heart-icon" src={ notFavorite } alt="favorite" />}
         </label>
         <input
@@ -35,15 +36,8 @@ function MusicCard(SongProps: SongType) {
           type="checkbox"
           name="favorite"
           id={ `favorite-${trackId.toString()}` }
-          checked={ isChecked }
-          onChange={ () => {
-            setIsChecked(!isChecked);
-            if (isChecked) {
-              removeSong(SongProps);
-            } else {
-              addSong(SongProps);
-            }
-          } }
+          checked={ favorite }
+          onChange={ () => onCheck(trackId) }
         />
       </div>
       <hr className="music-card-hr" />

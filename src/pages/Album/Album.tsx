@@ -6,6 +6,7 @@ import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
 import './Album.css';
 import SearchCard from '../../components/SearchCard/SearchCard';
+import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
 function Album({ loadProps } : { loadProps: LoadType }) {
   const { load, setLoad } = loadProps;
@@ -13,11 +14,6 @@ function Album({ loadProps } : { loadProps: LoadType }) {
 
   const [songs, setSongs] = useState<SongType[]>([]);
   const [album, setAlbum] = useState<(AlbumType)>();
-  // const [favorite, setFavorite] = useState(false);
-
-  // const addFavorite = () => {
-  //   setFavorite(!favorite);
-  // };
 
   /* Verifica se o id não é undefined, faz o fetch do album
   e suas musicas e separa o objeto do album do objeto das musicas */
@@ -26,22 +22,46 @@ function Album({ loadProps } : { loadProps: LoadType }) {
       if (id) {
         setLoad(true);
         const albumAndSongs = await getMusics(id);
+        const favoriteSongs = await getFavoriteSongs();
         setLoad(false);
 
-        setAlbum(albumAndSongs[0]);
-        // Verifica o tipo do elemento, para saber se é musica ou não. E add nos songs.
-        albumAndSongs.map((element) => {
-          if (element && 'trackId' in element) {
-            setSongs((prevSongs) => [...prevSongs, element]);
+        const getAlbum = albumAndSongs[0];
+        setAlbum(getAlbum);
+
+        const getSongsList = albumAndSongs.slice(1) as SongType[];
+        console.log(favoriteSongs);
+        const newSongsList = getSongsList.map((element) => {
+          if (favoriteSongs.find((music) => music.trackId === element.trackId)) {
+            return { ...element, favorite: true };
           }
-          /* porque precisa do return? */
-          return songs;
+          return { ...element, favorite: false };
+        });
+
+        newSongsList.map((element) => {
+          setSongs((prevSongs) => [...prevSongs, element]);
+          return element;
         });
       }
     };
     getData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleCheck = (trackId: number) => {
+    const songsList = songs.map((song) => {
+      if (trackId === song.trackId) {
+        if (song.favorite) {
+          removeSong(song);
+        } else {
+          addSong(song);
+        }
+        return { ...song, favorite: !song.favorite };
+      }
+      return song;
+    });
+    setSongs(songsList);
+  };
+
   if (load) return <Loading />;
 
   /* Renderiza os card do album e cards das respectivas musicas */
@@ -60,8 +80,8 @@ function Album({ loadProps } : { loadProps: LoadType }) {
         {songs.map((song) => (
           <MusicCard
             key={ song.trackId }
-            { ...song }
-            // addFavorite={ addFavorite }
+            songData={ song }
+            onCheck={ handleCheck }
           />
         ))}
       </aside>
