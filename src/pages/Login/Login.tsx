@@ -30,7 +30,7 @@ function Login({ loadProps } : { loadProps: LoadType }) {
     /* Formulário de cadastro */
     <form className="centered login-card" onSubmit={ handleSubmit }>
 
-      <label className="form-label" htmlFor="login" />
+      <label className="form-label" htmlFor="login">Login</label>
       <input
         className="form-control form-control-lg"
         placeholder="Nome"
