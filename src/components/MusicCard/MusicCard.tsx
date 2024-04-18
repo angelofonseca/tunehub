@@ -6,10 +6,11 @@ import './MusicCard.css';
 type SongsListType = {
   songData: SongType;
   onCheck: (songData: SongType) => void;
+  isFavorite: boolean;
 };
 
-function MusicCard({ songData, onCheck }: SongsListType) {
-  const { previewUrl, trackId, trackName, favorite } = songData;
+function MusicCard({ songData, onCheck, isFavorite }: SongsListType) {
+  const { previewUrl, trackId, trackName } = songData;
 
   return (
     <>
@@ -27,16 +28,18 @@ function MusicCard({ songData, onCheck }: SongsListType) {
           htmlFor={ `favorite-${trackId.toString()}` }
           data-testid={ `checkbox-music-${trackId}` }
         >
-          {favorite
-            ? <img className="heart-icon" src={ favoriteImg } alt="favorite" />
-            : <img className="heart-icon" src={ notFavorite } alt="favorite" />}
+          <img
+            className="heart-icon"
+            src={ isFavorite ? favoriteImg : notFavorite }
+            alt="favorite"
+          />
         </label>
         <input
           className="favorite-input"
           type="checkbox"
           name="favorite"
           id={ `favorite-${trackId.toString()}` }
-          checked={ favorite }
+          checked={ isFavorite }
           onChange={ () => onCheck(songData) }
         />
       </div>

@@ -29,10 +29,10 @@ export type SearchType = {
   searched: string;
   setSearched: React.Dispatch<React.SetStateAction<string>>;
 };
-export type FavoritesType = {
-  favorites: SongType[] | null;
-  setFavorites: React.Dispatch<React.SetStateAction<SongType[] | null>>;
-};
+// export type FavoritesType = {
+//   favorites: SongType[];
+//   setFavorites: React.Dispatch<React.SetStateAction<SongType[] | null>>;
+// };
 
 export type LoadType = {
   load: boolean;

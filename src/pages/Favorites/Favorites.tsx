@@ -2,13 +2,16 @@
 import { useEffect } from 'react';
 import './Favorites.css';
 import { getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
-import { FavoritesType, LoadType, SongType } from '../../types';
+import { LoadType, SongType } from '../../types';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
 
 function Favorites({ loadProps, favoritesProps }: {
   loadProps: LoadType;
-  favoritesProps: FavoritesType;
+  favoritesProps: {
+    favorites: SongType[];
+    setFavorites: React.Dispatch<React.SetStateAction<SongType[]>>;
+  }
 }) {
   const { load, setLoad } = loadProps;
   const { favorites, setFavorites } = favoritesProps;
@@ -24,30 +27,29 @@ function Favorites({ loadProps, favoritesProps }: {
     getData();
   }, []);
 
-  const handleCheck = (music: SongType) => {
-    if (favorites) {
-      const songsList = favorites.filter((song) => {
-        if (song.trackId === music.trackId) {
-          removeSong(song);
-        }
-        return song.trackId !== music.trackId;
-      });
-      setFavorites(songsList);
-    }
+  const handleCheck = async (music: SongType) => {
+    setLoad(true);
+    const result = favorites.filter((element) => element.trackId !== music.trackId);
+    await removeSong(music);
+    setFavorites(result);
+    setLoad(false);
   };
 
   if (load) return <Loading />;
 
   return (
-    <div>
-      {favorites?.map((song) => (
+    <main className="music-list centered favorites-main">
+      <h2>Músicas Favoritas</h2>
+      <hr />
+      {favorites.map((song) => (
         <MusicCard
           key={ song.trackId }
           songData={ song }
           onCheck={ handleCheck }
+          isFavorite
         />
       ))}
-    </div>
+    </main>
   );
 }
 

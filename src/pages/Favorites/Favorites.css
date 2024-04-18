@@ -1,1 +1,9 @@
 /* favorites */
+.favorites-main {
+  width: 50%;
+}
+
+h2 {
+  margin-bottom: 100px;
+  text-align: center;
+}

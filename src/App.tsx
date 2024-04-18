@@ -13,7 +13,7 @@ import { AlbumType, SongType } from './types';
 
 function App() {
   const [search, setSearch] = useState<AlbumType[] | null>(null);
-  const [favorites, setFavorites] = useState<SongType[] | null>(null);
+  const [favorites, setFavorites] = useState<SongType[]>([]);
   const [searched, setSearched] = useState('');
   const [load, setLoad] = useState(false);
 
@@ -32,6 +32,7 @@ function App() {
           path="/album/:id"
           element={ <Album
             loadProps={ { load, setLoad } }
+            favoritesProps={ { favorites, setFavorites } }
           /> }
         />
         <Route

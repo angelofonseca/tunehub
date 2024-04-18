@@ -8,10 +8,14 @@ import './Album.css';
 import SearchCard from '../../components/SearchCard/SearchCard';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
-function Album({ loadProps }: {
+function Album({ loadProps, favoritesProps }: {
   loadProps: LoadType;
+  favoritesProps: {
+    favorites: SongType[],
+    setFavorites: React.Dispatch<React.SetStateAction<SongType[]>> }
 }) {
   const { load, setLoad } = loadProps;
+  const { favorites, setFavorites } = favoritesProps;
   // const { favorites, setFavorites } = favoritesProps;
   const { id } = useParams();
 
@@ -32,32 +36,27 @@ function Album({ loadProps }: {
         setAlbum(getAlbum);
 
         const getSongsList = albumAndSongs.slice(1) as SongType[];
-        const newSongsList = getSongsList.map((element) => {
-          if (favoriteSongs?.find((music) => music.trackId === element.trackId)) {
-            return { ...element, favorite: true };
-          }
-          return { ...element, favorite: false };
-        });
-        setSongs(newSongsList);
+        setFavorites(favoriteSongs);
+        setSongs(getSongsList);
       }
     };
     getData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCheckBox = (music: SongType) => {
-    const songsList = songs.map((song) => {
-      if (music.trackId === song.trackId) {
-        if (song.favorite) {
-          removeSong(song);
-        } else {
-          addSong(song);
-        }
-        return { ...song, favorite: !song.favorite };
-      }
-      return song;
-    });
-    setSongs(songsList);
+  const handleCheckBox = async (music: SongType) => {
+    setLoad(true);
+    const check = favorites.some((element) => element.trackId === music.trackId);
+    let result = [];
+    if (check) {
+      await removeSong(music);
+      result = favorites.filter((element) => element.trackId !== music.trackId);
+    } else {
+      result = [...favorites, music];
+      await addSong(music);
+    }
+    setFavorites(result);
+    setLoad(false);
   };
 
   if (load) return <Loading />;
@@ -74,12 +73,13 @@ function Album({ loadProps }: {
           key={ album.collectionId }
         />
       )}
-      <aside className="aside-music-list">
+      <aside className="music-list">
         {songs.map((song) => (
           <MusicCard
             key={ song.trackId }
             songData={ song }
             onCheck={ handleCheckBox }
+            isFavorite={ favorites.some((element) => element.trackId === song.trackId) }
           />
         ))}
       </aside>
