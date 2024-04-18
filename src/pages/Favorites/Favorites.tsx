@@ -24,19 +24,15 @@ function Favorites({ loadProps, favoritesProps }: {
     getData();
   }, []);
 
-  const handleCheck = async (music: SongType) => {
+  const handleCheck = (music: SongType) => {
     if (favorites) {
-      favorites.map((song) => {
-        if (music.trackId === song.trackId) {
+      const songsList = favorites.filter((song) => {
+        if (song.trackId === music.trackId) {
           removeSong(song);
         }
-        return song;
+        return song.trackId !== music.trackId;
       });
-      const test = await getFavoriteSongs();
-      console.log(test);
-
-      const test2 = test.map((song) => ({ ...song, favorite: true }));
-      setFavorites(test2);
+      setFavorites(songsList);
     }
   };
 

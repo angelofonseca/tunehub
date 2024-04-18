@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AlbumType, FavoritesType, LoadType, SongType } from '../../types';
+import { AlbumType, LoadType, SongType } from '../../types';
 import getMusics from '../../services/musicsAPI';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
@@ -8,9 +8,8 @@ import './Album.css';
 import SearchCard from '../../components/SearchCard/SearchCard';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
-function Album({ loadProps, favoritesProps }: {
+function Album({ loadProps }: {
   loadProps: LoadType;
-  favoritesProps: FavoritesType;
 }) {
   const { load, setLoad } = loadProps;
   // const { favorites, setFavorites } = favoritesProps;
@@ -33,8 +32,6 @@ function Album({ loadProps, favoritesProps }: {
         setAlbum(getAlbum);
 
         const getSongsList = albumAndSongs.slice(1) as SongType[];
-        console.log(favoriteSongs);
-
         const newSongsList = getSongsList.map((element) => {
           if (favoriteSongs?.find((music) => music.trackId === element.trackId)) {
             return { ...element, favorite: true };

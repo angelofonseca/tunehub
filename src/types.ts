@@ -17,10 +17,10 @@ export type UserType = {
 };
 
 export type SongType = {
-  trackId: number,
-  trackName: string,
-  previewUrl: string,
-  favorite?: boolean,
+  trackId: number;
+  trackName: string;
+  previewUrl: string;
+  favorite?: boolean;
 };
 
 export type SearchType = {

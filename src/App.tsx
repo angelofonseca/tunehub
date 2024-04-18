@@ -32,7 +32,6 @@ function App() {
           path="/album/:id"
           element={ <Album
             loadProps={ { load, setLoad } }
-            favoritesProps={ { favorites, setFavorites } }
           /> }
         />
         <Route
