@@ -35,6 +35,12 @@ export type LoadType = {
   setLoad: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+export type MusicCardType = {
+  songData: SongType;
+  onCheck: (songData: SongType) => void;
+  isFavorite: boolean;
+};
+
 export type AlbumCardType = {
   artistName: string;
   collectionName: string;

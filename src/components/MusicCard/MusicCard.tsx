@@ -1,15 +1,9 @@
-import { SongType } from '../../types';
+import { MusicCardType } from '../../types';
 import favoriteImg from '../../images/checked_heart.png';
 import notFavorite from '../../images/empty_heart.png';
 import './MusicCard.css';
 
-type SongsListType = {
-  songData: SongType;
-  onCheck: (songData: SongType) => void;
-  isFavorite: boolean;
-};
-
-function MusicCard({ songData, onCheck, isFavorite }: SongsListType) {
+function MusicCard({ songData, onCheck, isFavorite }: MusicCardType) {
   const { previewUrl, trackId, trackName } = songData;
 
   return (

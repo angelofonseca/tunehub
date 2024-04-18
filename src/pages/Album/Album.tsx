@@ -44,18 +44,18 @@ function Album({ loadProps, favoritesProps }: {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCheckBox = async (music: SongType) => {
-    setLoad(true);
+  const handleCheckBox = (music: SongType) => {
+    // setLoad(true);
     const check = favorites.some((element) => element.trackId === music.trackId);
     let result = [];
     if (check) {
-      await removeSong(music);
+      removeSong(music);
       result = favorites.filter((element) => element.trackId !== music.trackId);
     } else {
       result = [...favorites, music];
-      await addSong(music);
+      addSong(music);
     }
-    setLoad(false);
+    // setLoad(false);
     setFavorites(result);
   };
 
