@@ -42,7 +42,7 @@ function App() {
             favoritesProps={ { favorites, setFavorites } }
           /> }
         />
-        <Route path="/profile" element={ <Profile /> } />
+        <Route path="/profile" element={ <Profile loadProps={ { load, setLoad } } /> } />
         <Route path="profile/edit" element={ <Edit /> } />
         <Route path="/*" element={ <NotFound /> } />
       </Route>
