@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getUser } from '../../services/userAPI';
 import { LoadType, UserType } from '../../types';
 import Loading from '../../components/Loading/Loading';
@@ -8,14 +8,13 @@ import Loading from '../../components/Loading/Loading';
 function Profile({ loadProps }: { loadProps: LoadType }) {
   const { load, setLoad } = loadProps;
   const [user, setUser] = useState<UserType>();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
       setLoad(true);
       const userData = await getUser();
-      setLoad(false);
       setUser(userData);
+      setLoad(false);
     };
     getData();
   }, []);

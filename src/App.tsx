@@ -6,7 +6,7 @@ import Search from './pages/Search/Search';
 import Album from './pages/Album/Album';
 import Favorites from './pages/Favorites/Favorites';
 import Profile from './pages/Profile/Profile';
-import Edit from './pages/Profile/Edit/Edit';
+import ProfileEdit from './pages/Profile/Edit/ProfileEdit';
 import NotFound from './pages/NotFound/NotFound';
 import Layout from './components/Layout/Layout';
 import { AlbumType, SongType } from './types';
@@ -43,7 +43,10 @@ function App() {
           /> }
         />
         <Route path="/profile" element={ <Profile loadProps={ { load, setLoad } } /> } />
-        <Route path="profile/edit" element={ <Edit /> } />
+        <Route
+          path="/profile/edit"
+          element={ <ProfileEdit /> }
+        />
         <Route path="/*" element={ <NotFound /> } />
       </Route>
     </Routes>

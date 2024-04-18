@@ -55,8 +55,8 @@ function Album({ loadProps, favoritesProps }: {
       result = [...favorites, music];
       await addSong(music);
     }
-    setFavorites(result);
     setLoad(false);
+    setFavorites(result);
   };
 
   if (load) return <Loading />;
