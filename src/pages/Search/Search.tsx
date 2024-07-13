@@ -36,18 +36,18 @@ function Search({ searchProps, loadProps }: {
       {/* Formulário de pesquisa do artista ou banda */}
       <form className="search-form" onSubmit={ handleSubmit }>
 
-        <label className="form-label" htmlFor="artist">Search</label>
-        <input
-          placeholder="Nome do Artista"
-          className="form-control search-input shadow-none"
-          type="text"
-          data-testid="search-artist-input"
-          value={ name }
-          id="artist"
-          name="artist"
-          onChange={ ({ target }) => setName(target.value) }
-        />
-
+        <label className="form-label" htmlFor="artist">
+          <input
+            placeholder="Nome do Artista"
+            className="form-control search-input shadow-none"
+            type="text"
+            data-testid="search-artist-input"
+            value={ name }
+            id="artist"
+            name="artist"
+            onChange={ ({ target }) => setName(target.value) }
+          />
+        </label>
         <button
           className="btn btn-primary btn-lg"
           type="submit"

@@ -1,9 +1,26 @@
-/* favorites */
 .favorites-main {
   width: 50%;
 }
 
 h2 {
-  margin-bottom: 100px;
   text-align: center;
+  margin: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

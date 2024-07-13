@@ -35,6 +35,7 @@ function MusicCard({ songData, onCheck, isFavorite }: MusicCardType) {
           id={ `favorite-${trackId.toString()}` }
           checked={ isFavorite }
           onChange={ () => onCheck(songData) }
+          hidden
         />
       </div>
       <hr className="music-card-hr" />

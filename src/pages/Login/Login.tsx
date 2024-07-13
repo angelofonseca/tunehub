@@ -30,18 +30,18 @@ function Login({ loadProps } : { loadProps: LoadType }) {
     /* Formulário de cadastro */
     <form className="centered login-card" onSubmit={ handleSubmit }>
 
-      <label className="form-label" htmlFor="login">Login</label>
-      <input
-        className="form-control form-control-lg"
-        placeholder="Nome"
-        type="text"
-        data-testid="login-name-input"
-        value={ login }
-        id="login"
-        name="login"
-        onChange={ ({ target }) => setLogin(target.value) }
-      />
-
+      <label className="form-label" htmlFor="login">
+        <input
+          className="form-control form-control-lg"
+          placeholder="Nome"
+          type="text"
+          data-testid="login-name-input"
+          value={ login }
+          id="login"
+          name="login"
+          onChange={ ({ target }) => setLogin(target.value) }
+        />
+      </label>
       <button
         className="btn btn-primary btn-lg"
         type="submit"
