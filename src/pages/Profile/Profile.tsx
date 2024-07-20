@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import { getUser } from '../../services/userAPI';
 import { LoadType, UserType } from '../../types';
 import Loading from '../../components/Loading/Loading';
@@ -25,7 +26,7 @@ function Profile({ loadProps }: { loadProps: LoadType }) {
   return (
     <main className="mt-5">
       <div className="row gutters-sm">
-        <div className="col-md-6 d-flex justify-content-center">
+        <div className="col-md-6 d-flex justify-content-end">
           <div className="card profile-card">
             <div className="card-body">
               <div className="d-flex flex-column align-items-center text-center">
@@ -38,12 +39,7 @@ function Profile({ loadProps }: { loadProps: LoadType }) {
                     />
                   )
                   : (
-                    <img
-                      src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                      alt="Admin"
-                      className="rounded-circle"
-                      width="150"
-                    />
+                    <FaUserCircle className="profile-icon" />
                   )}
                 <div className="mt-3">
                   <h4>{user?.name}</h4>
@@ -52,7 +48,7 @@ function Profile({ loadProps }: { loadProps: LoadType }) {
             </div>
           </div>
         </div>
-        <div className="col-md-6 d-flex justify-content-center">
+        <div className="col-md-6 d-flex justify-content-start">
           <div className="card profile-card mb-3">
             <div className="card-body profile-card-body">
               <div className="row">

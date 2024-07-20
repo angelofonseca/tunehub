@@ -73,7 +73,7 @@ function Album({ loadProps, favoritesProps }: {
           key={ album.collectionId }
         />
       )}
-      <aside className="music-list">
+      <aside className="music-list bg-dark">
         {songs.map((song) => (
           <MusicCard
             key={ song.trackId }

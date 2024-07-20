@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 0;
     word-wrap: break-word;
     background-color: inherit;
     background-clip: border-box;
@@ -16,4 +15,8 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+}
+
+.profile-icon {
+    font-size: 12rem;
 }

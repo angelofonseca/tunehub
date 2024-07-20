@@ -1,10 +1,6 @@
 # :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+
+A aplicação TuneHub permite aos usuários explorar uma vasta biblioteca de artistas e bandas através de um filtro de pesquisa, sendo possível visualizar e reproduzir as músicas contidas em cada álbum. Além disso, é possível favoritar/desfavoritar as músicas, acessar as músicas favoritadas e editar informações de perfil.
+
+As pastas components e pages foram criadas por mim, e na pasta src os arquivos App.tsx, index.css, main.tsx e types.ts também foram editados por mim.
+O restante dos arquivos foram criados pela Trybe.
