@@ -10,6 +10,10 @@ color: white;
   color: #888;
 }
 
+.search-input:focus {
+  color: white;
+}
+
 .title {
   margin-bottom: 30px;
   text-align: center;

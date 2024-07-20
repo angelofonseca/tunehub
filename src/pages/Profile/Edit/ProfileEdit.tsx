@@ -28,10 +28,7 @@ function ProfileEdit() {
   }, []);
 
   const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const isDisabled = !user.name
-  || !user.description
-  || !user.image
-  || !emailRegex.test(user.email);
+  const isDisabled = !user.name || !user.description || !emailRegex.test(user.email);
 
   const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -62,7 +59,7 @@ function ProfileEdit() {
             type="text"
             name="name"
             id="name"
-            className="form-control"
+            className="form-control search-input"
             value={ user.name }
             onChange={ handleChange }
           />
@@ -74,7 +71,7 @@ function ProfileEdit() {
         <div className="col-sm-10">
           <input
             data-testid="edit-input-email"
-            className="form-control"
+            className="form-control search-input"
             type="email"
             name="email"
             id="email"
@@ -90,7 +87,7 @@ function ProfileEdit() {
             data-testid="edit-input-description"
             type="text"
             name="description"
-            className="form-control"
+            className="form-control search-input"
             id="description"
             value={ user.description }
             onChange={ handleChange }
@@ -106,7 +103,7 @@ function ProfileEdit() {
             type="text"
             name="image"
             id="image"
-            className="form-control"
+            className="form-control search-input"
             value={ user.image }
             onChange={ handleChange }
           />
