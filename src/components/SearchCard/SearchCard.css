@@ -2,6 +2,8 @@
   border: none;
   padding: 0;
   width: 240px;
+  background-color: inherit;
+  color: inherit;
 }
 
 .card-body {
@@ -11,4 +13,12 @@
 
 .card-body > p {
   font-size: 16px;
+}
+
+.card-img-top {
+  border-radius: 10px;
+}
+
+.card-title {
+  color: rgba(255, 255, 255, 0.705);
 }

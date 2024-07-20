@@ -1,5 +1,7 @@
 .favorites-main {
+  margin-top: 5rem;
   width: 50%;
+  background-color: inherit;
 }
 
 h2 {

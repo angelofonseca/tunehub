@@ -1,1 +1,19 @@
-/* perfil */
+.profile-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: inherit;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    height: 500px;
+    min-width: 400px;
+}
+
+.profile-card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}

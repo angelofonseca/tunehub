@@ -38,7 +38,7 @@ function Favorites({ loadProps, favoritesProps }: {
   if (load) return <Loading />;
 
   return (
-    <main className="music-list centered favorites-main">
+    <main className="music-list centered favorites-main bg-dark">
       <h2>Músicas Favoritas</h2>
       <hr />
       {favorites.map((song) => (

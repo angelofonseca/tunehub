@@ -1,8 +1,15 @@
 .nav-top {
-  display: flex;
-  justify-content: flex-end;
   padding: 15px;
+  align-items: center;
+}
 
+.h1-title-link {
+  text-decoration: none;
+}
+
+.h1-title {
+  margin-bottom: 0;
+  color: green;
 }
 
 .nav-bottom {
@@ -20,21 +27,25 @@
 }
 
 .active {
-  background-color: green;
-  color: white;
+  background-color: rgb(18, 58, 18);
+  color: #888888;
+}
+
+.icon-container {
+  border: none;
+  background-color: transparent;
 }
 
 .user-icon {
-  font-size: 24px;
+  font-size: 2.5rem;
+  color: green;
 }
 
 .btn-user {
   align-items: center;
   border-radius: 100px;
   display: flex;
-  gap: 10px;
   margin-bottom: 0;
-  margin-right: 40px;
 }
 
 p {

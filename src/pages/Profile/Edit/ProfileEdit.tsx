@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import { UserType } from '../../../types';
 import { getUser, updateUser } from '../../../services/userAPI';
@@ -53,52 +53,78 @@ function ProfileEdit() {
   if (load) return <Loading />;
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <label htmlFor="name">Nome</label>
-      <input
-        data-testid="edit-input-name"
-        type="text"
-        name="name"
-        id="name"
-        value={ user.name }
-        onChange={ handleChange }
-      />
+    <form onSubmit={ handleSubmit } className="mt-5 pt-5">
+      <div className="row mb-3">
+        <label className="col-sm-2 col-form-label" htmlFor="name">Nome</label>
+        <div className="col-sm-10">
+          <input
+            data-testid="edit-input-name"
+            type="text"
+            name="name"
+            id="name"
+            className="form-control"
+            value={ user.name }
+            onChange={ handleChange }
+          />
+        </div>
+      </div>
 
-      <label htmlFor="email">Email</label>
-      <input
-        data-testid="edit-input-email"
-        type="email"
-        name="email"
-        id="email"
-        value={ user.email }
-        onChange={ handleChange }
-      />
-      <label htmlFor="description">Descrição</label>
-      <input
-        data-testid="edit-input-description"
-        type="text"
-        name="description"
-        id="description"
-        value={ user.description }
-        onChange={ handleChange }
-      />
-      <label htmlFor="image">Foto</label>
-      <input
-        data-testid="edit-input-image"
-        type="text"
-        name="image"
-        id="image"
-        value={ user.image }
-        onChange={ handleChange }
-      />
+      <div className="row mb-3">
+        <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
+        <div className="col-sm-10">
+          <input
+            data-testid="edit-input-email"
+            className="form-control"
+            type="email"
+            name="email"
+            id="email"
+            value={ user.email }
+            onChange={ handleChange }
+          />
+        </div>
+      </div>
+      <div className="row mb-3">
+        <label htmlFor="description" className="col-sm-2 col-form-label">Descrição</label>
+        <div className="col-sm-10">
+          <input
+            data-testid="edit-input-description"
+            type="text"
+            name="description"
+            className="form-control"
+            id="description"
+            value={ user.description }
+            onChange={ handleChange }
+          />
+        </div>
+      </div>
 
-      <button
-        data-testid="edit-button-save"
-        type="submit"
-        disabled={ isDisabled }
-      >
-        Salvar
-      </button>
+      <div className="row mb-3">
+        <label htmlFor="image" className="col-sm-2 col-form-label">Foto</label>
+        <div className="col-sm-10">
+          <input
+            data-testid="edit-input-image"
+            type="text"
+            name="image"
+            id="image"
+            className="form-control"
+            value={ user.image }
+            onChange={ handleChange }
+          />
+        </div>
+      </div>
+      <div className="d-flex justify-content-between align-items-baseline ">
+        <Link className="btn btn-primary" to="/profile">
+          Voltar
+        </Link>
+        <button
+          data-testid="edit-button-save"
+          type="submit"
+          className="btn btn-primary"
+          disabled={ isDisabled }
+        >
+          Salvar
+        </button>
+      </div>
     </form>
   );
 }

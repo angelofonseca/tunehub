@@ -10,15 +10,15 @@
   margin-left: 10px;
 }
 
-audio {
+/* audio {
   flex: 1 1 0px;
-}
-
-.favorite-input {
-
-  /* display: none; */
-}
+} */
 
 .heart-icon {
   cursor: pointer;
+}
+
+/* Basic customization */
+audio::-webkit-media-controls-panel {
+  background-color: #888888;
 }

@@ -1,15 +1,13 @@
-.search-form {
-  flex-direction: row;
-  gap: 1rem;
-  margin-top: 4rem;
-  width: 100%;
-  justify-content: center;
+.search-input {
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+background-color: #333738 !important;
+box-shadow: none !important;
+color: white;
 }
 
-.search-input {
-  box-shadow: none;
-  font-size: 20px;
-  height: 48.96px;
+.search-input::placeholder {
+  color: #888;
 }
 
 .title {
@@ -24,4 +22,13 @@
   justify-content: center;
   margin: auto;
   width: 80%;
+}
+
+.search-btn:disabled {
+  background-color: inherit;
+}
+
+.search-btn {
+  color: white;
+  background-color: #6c757d;
 }
