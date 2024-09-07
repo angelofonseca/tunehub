@@ -1,3 +1,5 @@
+// Este arquivo foi criado pela Trybe.
+
 import { AlbumType, SongType } from '../types';
 
 const getMusics = async (id: string): Promise<[AlbumType, ...SongType[]]> => {

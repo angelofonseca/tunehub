@@ -1,3 +1,5 @@
+// Este arquivo foi criado pela Trybe.
+
 import { UserType } from '../types';
 
 const USER_KEY = 'user';

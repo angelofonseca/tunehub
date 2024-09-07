@@ -1,3 +1,5 @@
+// Este arquivo foi criado pela Trybe.
+
 import { SongType } from '../types';
 
 const FAVORITE_SONGS_KEY = 'favorite_songs';

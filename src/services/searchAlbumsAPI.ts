@@ -1,3 +1,5 @@
+// Este arquivo foi criado pela Trybe.
+
 import { AlbumType } from '../types';
 
 const searchAlbumsAPI = async (artist: string): Promise<AlbumType[]> => {
