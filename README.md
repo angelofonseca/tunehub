@@ -1,6 +1,41 @@
-# :construction: README em construção ! :construction:
+# TuneHub
 
-A aplicação TuneHub permite aos usuários explorar uma vasta biblioteca de artistas e bandas através de um filtro de pesquisa, sendo possível visualizar e reproduzir as músicas contidas em cada álbum. Além disso, é possível favoritar/desfavoritar as músicas, acessar as músicas favoritadas e editar informações de perfil.
+Aplicação que utiliza a API do Itunes para reproduzir músicas (prévias), criar lista de músicas favoritas e editar o perfil da pessoa usuária logada.
+Essa aplicação é capaz de:
 
-As pastas components e pages foram criadas por mim, e na pasta src os arquivos App.tsx, index.css, main.tsx e types.ts também foram editados por mim.
-O restante dos arquivos foram criados pela Trybe.
+- Fazer login.
+- Pesquisar por banda ou artista.
+- Listar os álbuns/músicas disponíveis da banda ou artista.
+- Reproduzir uma prévia das músicas.
+- Favoritar e desfavoritar músicas.
+- Listar músicas favoritas.
+- Página de Perfil.
+- Editar o perfil.
+
+## Técnologias usadas
+
+Front-end:
+> Desenvolvido usando: NodeJS, React, Typescript, CSS.
+
+## Créditos
+
+Este projeto inclui arquivos e recursos desenvolvidos pela [Trybe](https://www.betrybe.com/).
+
+Agradecimentos especiais à Trybe por fornecer a base para este projeto.
+
+
+## Instalação
+
+1. Clone o repositório e instale as dependências:
+
+   ```bash
+   git clone git@github.com:angelofonseca/tunehub.git
+   cd tunehub
+   npm i
+
+## Iniciando o projeto
+
+1. Após instalar as dependências:
+
+   ```bash
+   npm run dev
